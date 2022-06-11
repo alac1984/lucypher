@@ -1,0 +1,34 @@
+GridLayout:
+    size: 800, 600
+    cols: 3
+    Menu:
+    MainArea:
+    DetailsArea:
+
+<Menu@BoxLayout>:
+    size_hint: .12, 1
+    canvas:
+        Color:
+            rgba: 0, 1, .5, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<MainArea@BoxLayout>:
+    size_hint: .8, 1
+    canvas:
+        Color:
+            rgba: 1, .5, .5, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<DetailsArea@BoxLayout>:
+    canvas:
+        Color:
+            rgba: 1, 0, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
