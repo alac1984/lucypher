@@ -1,24 +1,43 @@
+#:import hex kivy.utils.get_color_from_hex
+
 GridLayout:
-    size: 800, 600
+    size: '800dp', '600dp'
     cols: 3
     Menu:
     MainArea:
     DetailsArea:
 
 <Menu@BoxLayout>:
+    orientation: 'vertical'
+    spacing: "22dp"
     size_hint: .12, 1
     canvas:
         Color:
-            rgba: 0, 1, .5, 1
+            rgba: hex('#ee6a59')
         Rectangle:
             size: self.size
             pos: self.pos
+    BlankVertical:
+        height: "20dp"
+    MenuIcon:
+        background_normal: 'menu.png'
+    BlankVertical:
+        height: "30dp"
+    MenuIcon:
+        background_normal: 'add.png'
+        width: "35dp"
+        height: "35dp"
+    MenuIcon:
+        background_normal: 'trash-can.png'
+        width: "35dp"
+        height: "35dp"
+    Widget:
 
 <MainArea@BoxLayout>:
     size_hint: .8, 1
     canvas:
         Color:
-            rgba: 1, .5, .5, 1
+            rgba: hex('#ece6cd')
         Rectangle:
             size: self.size
             pos: self.pos
@@ -26,9 +45,22 @@ GridLayout:
 <DetailsArea@BoxLayout>:
     canvas:
         Color:
-            rgba: 1, 0, 1, 1
+            rgba: hex('#ece6cd')
         Rectangle:
             size: self.size
             pos: self.pos
 
+<MenuIcon@Button>:
+    size_hint: None, None
+    width: "30dp"
+    height: "30dp"
+    pos_hint: {'center_x': .5}
+    border: 0, 0, 0, 0
 
+<BlankVertical@Widget>:
+    size_hint: None, None
+    width: self.parent.width
+
+<BlankHorizontal@Widget>:
+    size_hint: None, None
+    height: self.parent.height
