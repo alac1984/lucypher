@@ -1,6 +1,6 @@
 #:import hex kivy.utils.get_color_from_hex
 
-GridLayout:
+<Root>:
     size: '800dp', '600dp'
     cols: 3
     Menu:
@@ -41,6 +41,10 @@ GridLayout:
         Rectangle:
             size: self.size
             pos: self.pos
+    BoxLayout:
+        orientation: "vertical"
+        TitleBar:
+        Widget:
 
 <DetailsArea@BoxLayout>:
     canvas:
@@ -64,3 +68,17 @@ GridLayout:
 <BlankHorizontal@Widget>:
     size_hint: None, None
     height: self.parent.height
+
+<TitleBar>:
+    BoxLayout:
+        Label:
+            text: "LUCYPHER"
+            font_name: "Syncopate"
+            bold: True
+            font_size: "20dp"
+        TextInput:
+            id: "search_input"
+            multiline: False
+            hint_text: "Search"
+            on_focus: root.focus()
+
