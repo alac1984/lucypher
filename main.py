@@ -4,8 +4,10 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.config import Config
 from kivy.core.text import LabelBase
-Config.set('graphics', 'resizable', False)
-Config.write()
+from kivy.core.window import Window
+
+
+Window.size = (800, 600)
 
 LabelBase.register(
     name="Syncopate",
