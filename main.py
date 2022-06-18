@@ -8,6 +8,8 @@ from kivy.core.window import Window
 
 
 Window.size = (800, 600)
+Window.minimum_width = 800
+Window.minimum_height = 600
 
 LabelBase.register(
     name="Syncopate",

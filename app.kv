@@ -7,6 +7,10 @@
     MainArea:
     DetailsArea:
 
+##########
+## MENU ##
+##########
+
 <Menu@BoxLayout>:
     orientation: 'vertical'
     spacing: "22dp"
@@ -18,6 +22,12 @@
         Rectangle:
             size: self.size
             pos: self.pos
+    canvas.after:
+        Color:
+            rgba: hex("#000000")
+        Line:
+            width: 1
+            rectangle: self.x, self.y, self.width, self.height
     BlankVertical:
         height: "20dp"
     MenuIcon:
@@ -34,6 +44,10 @@
         height: "35dp"
     Widget:
 
+###############
+## MAIN AREA ##
+###############
+
 <MainArea@BoxLayout>:
     orientation: 'vertical'
     size_hint: .4, 1
@@ -48,32 +62,9 @@
         size_hint: None, None
         size: self.parent.width, self.parent.height
         TitleBar:
-        Widget:
+        MainAreaBox:
 
-<DetailsArea@BoxLayout>:
-    canvas:
-        Color:
-            rgba: hex('#ffffff')
-        Rectangle:
-            size: self.size
-            pos: self.pos
-    size_hint: .4, 1
-
-<MenuIcon@Button>:
-    size_hint: None, None
-    width: "30dp"
-    height: "30dp"
-    pos_hint: {'center_x': .5}
-    border: 0, 0, 0, 0
-
-<BlankVertical@Widget>:
-    size_hint: None, None
-    width: self.parent.width
-
-<BlankHorizontal@Widget>:
-    size_hint: None, None
-    height: self.parent.height
-
+# The bar with title and search widget
 <TitleBar>:
     size_hint: None, None
     size: "340dp", "60dp"
@@ -92,3 +83,99 @@
             hint_text: "Search"
             on_focus: root.focus()
 
+# The box with a grey bar and a big white area
+<MainAreaBox@BoxLayout>:
+    orientation: 'vertical'
+    MainAreaBoxBar:
+    MainAreaBoxPanel:
+
+# The bar of above box
+<MainAreaBoxBar@BoxLayout>:
+    canvas:
+        Color:
+            rgba: hex("#d3d3d3")
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    canvas.after:
+        Color:
+            rgba: hex("#000000")
+        Line:
+            width: 1
+            rectangle: self.x, self.y, self.width, self.height
+    size_hint_x: 1
+    size_hint_y: None
+    height: "30dp"
+    Label:
+        text: "Label"
+        size_hint: None, None
+        size: "60dp", "30dp"
+        color: hex("#000000")
+    Widget:
+    Label:
+        text: "All"
+        size_hint: None, None
+        size: "40dp", "30dp"
+        color: hex("#000000")
+    DropDownButton:
+    Widget:
+        size_hint: .1, 1
+
+# The big white area of MainAreaBox
+<MainAreaBoxPanel@BoxLayout>:
+    canvas:
+        Color:
+            rgba: hex("#ffffff")
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    canvas.after:
+        Color:
+            rgba: hex("#000000")
+        Line:
+            width: 1
+            rectangle: self.x, self.y, self.width, self.height
+
+##################
+## DETAILS AREA ##
+##################
+
+<DetailsArea@BoxLayout>:
+    canvas:
+        Color:
+            rgba: hex('#ece6cd')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    size_hint: .4, 1
+
+#############
+## BUTTONS ##
+#############
+
+<MenuIcon@Button>:
+    size_hint: None, None
+    width: "30dp"
+    height: "30dp"
+    pos_hint: {'center_x': .5}
+    border: 0, 0, 0, 0
+
+<DropDownButton@ButtonBehavior+Image>:
+    size_hint: None, None
+    width: "10dp"
+    height: "30dp"
+    source: "sort-down.png"
+    border: 0, 0, 0, 0
+
+
+###################
+## BLANK WIDGETS ##
+###################
+
+<BlankVertical@Widget>:
+    size_hint: None, None
+    width: self.parent.width
+
+<BlankHorizontal@Widget>:
+    size_hint: None, None
+    height: self.parent.height
